@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}" />
+</head>
+<body>
+    <div class="orb orb-left" aria-hidden="true"></div>
+    <div class="orb orb-right" aria-hidden="true"></div>
+
+    <main class="app-shell">
+        <header class="hero">
+            <h1>Multimodal Document Intelligence</h1>
+            <p>Upload PDFs and ask questions instantly</p>
+        </header>
+
+        <section class="workspace" aria-label="Document chat workspace">
+            <aside class="panel upload-panel">
+                <div class="panel-head">
+                    <h2>Upload PDFs</h2>
+                    <p>Add one or more files and chat with a selected document.</p>
+                </div>
+
+                <label id="dropZone" class="drop-zone" for="fileInput">
+                    <input id="fileInput" type="file" accept="application/pdf,.pdf" hidden />
+                    <span class="drop-icon">PDF</span>
+                    <strong id="dropTitle">Drag and drop a PDF</strong>
+                    <span id="dropHint">or click to browse local files</span>
+                </label>
+                <p class="field-hint">Accepted: PDF only. Recommended max size: 100 MB.</p>
+
+                <div class="button-row">
+                    <button id="browseButton" type="button" class="btn btn-secondary">Choose File</button>
+                    <button id="uploadButton" type="button" class="btn btn-primary" disabled>Upload</button>
+                </div>
+
+                <div id="uploadProgressWrap" class="progress-wrap" aria-live="polite">
+                    <div class="progress-meta">
+                        <span id="uploadProgressLabel">Uploading...</span>
+                        <span id="uploadProgressText">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="uploadProgressFill" class="progress-fill"></div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="documentSelect">Active document</label>
+                    <select id="documentSelect" disabled>
+                        <option value="">No uploaded document</option>
+                    </select>
+                </div>
+
+                <div id="uploadStatus" class="upload-status empty" aria-live="polite">
+                    Upload a PDF to begin.
+                </div>
+            </aside>
+
+            <section class="panel chat-panel">
+                <div class="panel-head chat-head">
+                    <h2>Grounded Chat</h2>
+                    <span id="activeDocumentBadge" class="badge">No document selected</span>
+                </div>
+
+                <div id="chatMessages" class="chat-messages" aria-live="polite"></div>
+
+                <div id="quickActions" class="quick-actions">
+                    <button type="button" class="btn btn-quick" data-action="summarize">Summarize document</button>
+                    <button type="button" class="btn btn-quick" data-action="key-points">Key points</button>
+                    <button type="button" class="btn btn-quick" data-action="skills">Skills / requirements</button>
+                </div>
+                <p id="chatHelper" class="chat-helper">Upload and select a document to enable chat.</p>
+
+                <form id="chatForm" class="chat-form">
+                    <textarea
+                        id="questionInput"
+                        rows="1"
+                        placeholder="Upload a PDF first to ask questions"
+                        disabled
+                    ></textarea>
+                    <button id="sendButton" type="submit" class="btn btn-primary" disabled>Send</button>
+                </form>
+                <p class="chat-hint">Press Enter to send. Use Shift+Enter for a new line.</p>
+            </section>
+        </section>
+    </main>
+
+    <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <script src="{{ url_for('static', path='js/main.js') }}" defer></script>
+</body>
+</html>
