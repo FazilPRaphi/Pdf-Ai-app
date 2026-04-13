@@ -1,3 +1,10 @@
+**i wont be able to like create a live link for this as it uses more space than the free tier hosting than available but it is fully functional in local also
+for the groq api key go to their official site and login you will recieve the api keys from there
+
+also since it is a free api key it can run a set of commands but fails here and there since it doesnt have like the power of sonnet or opus like models so like summarizing the documents and rest liek willl work easily and some might fail regardless clone if needed
+
+
+
 # Multimodal Document Intelligence System
 
 An end-to-end AI-powered document chat application that lets users upload PDFs and ask grounded questions with source-aware responses. Built with a production-ready Retrieval-Augmented Generation (RAG) pipeline using FastAPI, Chroma, and Groq.
